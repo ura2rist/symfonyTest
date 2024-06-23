@@ -6,12 +6,16 @@ framework:
     # Note that the session will be started ONLY if you read or write from it.
     session: true
 
-    #esi: true
+    esi: true
     #fragments: true
 
 when@test:
     framework:
+        http_cache: true
         test: true
         session:
             handler_id: '%env(resolve:DATABASE_URL)%'
             storage_factory_id: session.storage.factory.mock_file
+when@dev:
+    framework:
+      http_cache: true
